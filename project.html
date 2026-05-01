@@ -1,0 +1,135 @@
+<html>
+    <head>
+	    <title>Student Data</title>
+		  <style>
+		     body{
+			   text-align:center;
+			   font-family:arial;
+			   background-color:#f2f2f2;
+		     }
+		     h1{
+			  color:darkblue;
+			 }
+			 table{
+			   border-collapse:collapse;
+			   background:white;
+			   width:85%;
+			   margin:auto;
+			 }
+			 input{
+			   padding:5px;
+			   margin:8px;
+			   width:220px;
+			   border-radius:10px;
+			 }
+			 th,td{
+			    padding:10px;
+				border:1px solid grey;
+			 }
+			 th{
+			    background-color:#007bff;
+				color:white;
+			 }
+			 .PASS{
+			    color:green;
+				font-weight:bold;
+			 }
+			 .FAIL{
+			     color:red;
+				 font-weight:bold;
+			 }
+			 
+			 
+		  
+		  </style>
+	</head>
+       <body>
+	      <h1>Student Marks</h1>
+		  <input type="text" id="search" placeholder="Serch Student Name">
+		  
+		  <table>
+		      <tr>
+			     <th>Roll No</th>
+			     <th>Name</th>
+				 <th>Maths</th>
+				 <th>Science</th>
+				 <th>English</th>
+				 <th>Total</th>
+				 <th>Percentage</th>
+				 <th>Grade</th>
+				 <th>Result</th>
+			  </tr>
+	         <tbody id="data"></tbody>
+		  </table>
+		 
+		 <script>
+		     var students=[];
+			 var xhttp = new XMLHttpRequest;
+			 xhttp.open("GET","files.json");
+			 xhttp.onload=function()
+			 {
+			   
+				   students=JSON.parse(xhttp.responseText);
+				   displaydata(students);
+			   
+			};
+			xhttp.send();
+			function displaydata(list)
+			{
+			   var output="";
+			   list.forEach(s => {
+			   var Total=s.Maths + s.Science + s.English;
+			   var per = (Total / 300 * 100).toFixed(2);
+			   var grade;
+			   if(per >=75)
+			   {
+			      grade = "A";
+			   }
+			   else if(per < 75 && per >= 60)
+			   {
+			      grade = "B";
+			   }
+			   else if(per < 60 && per >= 50)
+               {
+                  grade = "C";
+			   }
+			   else
+			   {
+			      grade = "D";
+			   }
+			   var result = (per >= 40)? "PASS" : "FAIL";
+			   output+=`
+			   <tr>
+			       <td>${s.RollNo}</td>
+                   <td>${s.Name}</td>
+                   <td>${s.Maths}</td>
+                   <td>${s.Science}</td>
+                   <td>${s.English}</td>
+                   <td>${Total}</td>
+                   <td>${per}%</td>
+                   <td>${grade}</td>
+                   <td class="${result === 'PASS' ? 'PASS' : 'FAIL'}">${result}</td>
+
+				  
+			   </tr>
+			   `;
+			  });
+			   document.getElementById("data").innerHTML = output;
+
+			}
+			document.getElementById("search").addEventListener("keyup", function () {
+			  var text = this.value.toLowerCase();
+			  var filtered = students.filter(s =>
+			    s.Name.toLowerCase().includes(text)
+				);
+				displaydata(filtered)
+		    });
+			  
+
+		 </script>
+            
+		  
+		
+	   </body>
+
+</html>

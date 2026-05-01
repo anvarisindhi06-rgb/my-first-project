@@ -1,0 +1,12 @@
+[
+    { "RollNo": 1,"Name": "Rahul", "Maths": 70, "Science": 65, "English": 60 },
+    { "RollNo": 2,"Name": "Amit", "Maths": 30, "Science": 25, "English": 20 },
+    { "RollNo": 3,"Name": "Priya", "Maths": 90, "Science": 85, "English": 80 },
+    { "RollNo": 4,"Name": "Neha", "Maths": 50, "Science": 45, "English": 40 },
+    { "RollNo": 5,"Name": "Karan", "Maths": 60, "Science": 55, "English": 50 },
+    { "RollNo": 6,"Name": "Anita", "Maths": 65, "Science": 70, "English": 55 },
+    { "RollNo": 7,"Name": "Pooja", "Maths": 30, "Science": 50, "English": 35 },
+    { "RollNo": 8,"Name": "Rohan", "Maths": 70, "Science": 55, "English": 60 },
+    { "RollNo": 9,"Name": "Ankita", "Maths": 75, "Science": 70, "English": 45 },
+    { "RollNo": 10,"Name": "Arjun", "Maths": 83, "Science": 69, "English": 75 }
+]
